@@ -43,7 +43,7 @@ app.use(function (err, req, res, next) {
 
 app.use('/api', routes);
 
-app.use('/blog', express.static('./view/blog'));
+app.use('/', express.static('./view/blog'));
 app.use('/back', express.static('./view/back'));
 
 app.listen(3000);

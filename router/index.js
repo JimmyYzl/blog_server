@@ -324,12 +324,16 @@ router.post('/upload', (req, res) => {
 router.get('/front_list', (req, res) => {
 	let page = req.query.page || 1;
 	let q = req.query.q;
+	let tag = req.query.tag;
 	let data = {isshow: true};
-	if(q){
+	if(q) {
 		data['$or'] = [
-			{'title': {'$regex': q, $options: '$i'}},
-			{'description': {'$regex': q, $options: '$i'}}
-		]
+			{'title': {'$regex': q || '', $options: '$i'}},
+			{'description': {'$regex': q || '', $options: '$i'}},
+		];
+	}
+	if(tag){
+		data.tags = tag
 	}
 	articleModel.count(data, (err, count) => {
 		if(err) {
