@@ -109,7 +109,7 @@ router.post('/article_blog', (req, res) => {
 					if(err) {
 						res.json({"status": "error", "code": "更新数据库失败"}) 
 					} else {
-						res.json({"status": "ok", "code": "成功"})
+						res.json({"status": "ok", "code": "成功", "id": body.id})
 					}
 				})
 		} else {
@@ -131,7 +131,7 @@ router.post('/article_blog', (req, res) => {
             if (err) {
               res.json({"status": "error", "code": "插入数据库失败"})
             } else {
-              res.json({"status": "ok", "code": "添加成功"});
+              res.json({"status": "ok", "code": "添加成功", "id": r._id});
             }
           })
 				}
